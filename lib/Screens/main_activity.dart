@@ -2,12 +2,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_calculator/widgets/button.dart';
 
+
 class MainPage extends StatefulWidget {
+
   @override
   _MainPageState createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
+  String calValue;
+  String functionClicked;
+
+  @override
+  void initState() {
+    calValue = '';
+    functionClicked = '';
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,6 +28,17 @@ class _MainPageState extends State<MainPage> {
           Container(
             height: 210,
             width: MediaQuery.of(context).size.width,
+            alignment: Alignment.bottomRight,
+            margin: EdgeInsets.only(right: 20),
+            child: Text(
+              calValue,
+              style: TextStyle(
+                fontSize: 50,
+                color: Colors.white
+              ),
+
+
+            ),
           ),
 
           Container(
@@ -59,87 +81,72 @@ class _MainPageState extends State<MainPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    children: [
-                      Button("C",hue: Colors.deepOrange,)
-                    ],
+                  Button(
+                    "C",
+                    hue: Colors.deepOrange,
+                    buttonPressed: (){
+                      changeValue("");
+
+                    },
                   ),
 
-                  Column(
-                    children: [
-                      Button("( )",hue: Colors.lightGreen[700],)
-                    ],
+                  Button("( )",hue: Colors.lightGreen[700],
+                    buttonPressed: () {
+                      String newText = '$calValue' + '( )';
+                      changeValue(newText);
+                    }
+                          ),
+
+                  Button("\%",hue: Colors.lightGreen[700],
+                    buttonPressed: (){
+                      String newText = '$calValue' + '\%';
+                      changeValue(newText);
+
+                    },
                   ),
 
-                  Column(
-                    children: [
-                      Button("\%",hue: Colors.lightGreen[700],)
-                    ],
-                  ),
+                  Button("/",hue: Colors.lightGreen[700],
+                    buttonPressed: (){
+                    functionClicked = 'divide';
+                      String newText = '$calValue' + '/';
+                      changeValue(newText);
 
-                  Column(
-                    children: [
-                      Button("\\",hue: Colors.lightGreen[700],)
-                    ],
-                  ),
+                    },
+                  )
                 ],
               ),
               SizedBox(height: 10,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    children: [
-                      Button("7",)
-                    ],
+                  Button("7",
+                    buttonPressed: (){
+                      String newText = '$calValue' + '7';
+                      changeValue(newText);
+                    },
                   ),
 
-                  Column(
-                    children: [
-                      Button("8",)
-                    ],
+                  Button("8",
+                    buttonPressed: (){
+                      String newText = '$calValue' + '8';
+                      changeValue(newText);
+                    },
                   ),
 
-                  Column(
-                    children: [
-                      Button("9",)
-                    ],
+                  Button("9",
+                    buttonPressed: (){
+                      String newText = '$calValue' + '9';
+                      changeValue(newText);
+                    },
                   ),
 
-                  Column(
-                    children: [
-                      Button("*",hue: Colors.lightGreen[700],)
-                    ],
-                  ),
-                ],
-              ),
+                  Button("*",hue: Colors.lightGreen[700],
+                    buttonPressed: (){
+                      functionClicked = "*";
+                      String newText = '$calValue' + '*';
+                      changeValue(newText);
 
-              SizedBox(height: 10,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      Button("4",)
-                    ],
-                  ),
-
-                  Column(
-                    children: [
-                      Button("5",)
-                    ],
-                  ),
-
-                  Column(
-                    children: [
-                      Button("6",)
-                    ],
-                  ),
-
-                  Column(
-                    children: [
-                      Button("-",hue: Colors.lightGreen[700],)
-                    ],
+                    },
                   ),
                 ],
               ),
@@ -148,28 +155,37 @@ class _MainPageState extends State<MainPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    children: [
-                      Button("1",)
-                    ],
+                Button("4",
+                  buttonPressed: (){
+                    String newText = '$calValue' + '4';
+                    changeValue(newText);
+
+                  },
+                ),
+
+                  Button("5",
+                    buttonPressed: (){
+                      String newText = '$calValue' + '5';
+                      changeValue(newText);
+
+                    },
                   ),
 
-                  Column(
-                    children: [
-                      Button("2",)
-                    ],
+                  Button("6",
+                    buttonPressed: (){
+                      String newText = '$calValue' + '6';
+                      changeValue(newText);
+
+                    },
                   ),
 
-                  Column(
-                    children: [
-                      Button("3",)
-                    ],
-                  ),
+                  Button("-",hue: Colors.lightGreen[700],
+                    buttonPressed: (){
+                    functionClicked = "-";
+                      String newText = '$calValue' + '-';
+                      changeValue(newText);
 
-                  Column(
-                    children: [
-                      Button("+",hue: Colors.lightGreen[700],)
-                    ],
+                    },
                   ),
                 ],
               ),
@@ -178,39 +194,130 @@ class _MainPageState extends State<MainPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    children: [
-                      Button("+/-",)
-                    ],
+                  Button("1",
+                    buttonPressed: (){
+                      String newText = '$calValue' + '1';
+                      changeValue(newText);
+
+                    },
                   ),
 
-                  Column(
-                    children: [
-                      Button("0",)
-                    ],
+                  Button("2",
+                    buttonPressed: (){
+                      String newText = '$calValue' + '2';
+                      changeValue(newText);
+
+                    },
                   ),
 
-                  Column(
-                    children: [
-                      Button(".",)
-                    ],
+                  Button("3",  buttonPressed: (){
+                    String newText = '$calValue' + '3';
+                    changeValue(newText);
+
+                  },
                   ),
 
-                  Column(
-                    children: [
-                      Button("=",hue: Colors.white,color: Colors.lightGreen[700],)
-                    ],
+                  Button("+",hue: Colors.lightGreen[700],
+                    buttonPressed: (){
+                      functionClicked = '+';
+                      String newText = '$calValue' + '+';
+                      changeValue(newText);
+
+                    },
                   ),
                 ],
               ),
 
+              SizedBox(height: 10,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Button("+/-",
+                    buttonPressed: (){
+                      String newText = '$calValue' + '-';
+                      changeValue(newText);
 
+                    },
+                  ),
 
+                  Button("0",
+                    buttonPressed: (){
+                      String newText = '$calValue' + '0';
+                      changeValue(newText);
 
+                    },
+                  ),
+
+                  Button(".",
+                    buttonPressed: (){
+                      String newText = '$calValue' + '.';
+                      changeValue(newText);
+                    },
+                  ),
+
+                  Button("=",hue: Colors.white,color: Colors.lightGreen[700],
+                    buttonPressed: (){
+                     if(functionClicked == '+'){
+                       List<String> splitValue = calValue.split('+');
+                       String firstElement = splitValue[0];
+                       String secondElement = splitValue[1];
+
+                       int firstNumber = int.parse(firstElement);
+                       int secondNumber = int.parse(secondElement);
+
+                       int sum = firstNumber + secondNumber;
+
+                       changeValue(sum.toString());
+                     }else if(functionClicked == '-'){
+                       List<String> splitValue = calValue.split('-');
+                       String firstElement = splitValue[0];
+                       String secondElement = splitValue[1];
+
+                       int firstNumber = int.parse(firstElement);
+                       int secondNumber = int.parse(secondElement);
+
+                       int sum = firstNumber - secondNumber;
+
+                       changeValue(sum.toString());
+                     }
+                     else if(functionClicked == 'divide'){
+                       List<String> splitValue = calValue.split('/');
+                       String firstElement = splitValue[0];
+                       String secondElement = splitValue[1];
+
+                       double firstNumber = double.parse(firstElement);
+                       double secondNumber = double.parse(secondElement);
+
+                       double sum = firstNumber / secondNumber;
+
+                       changeValue(sum.toString());
+                       }
+                     else if(functionClicked == '*'){
+                       List<String> splitValue = calValue.split('*');
+                       String firstElement = splitValue[0];
+                       String secondElement = splitValue[1];
+
+                       int firstNumber = int.parse(firstElement);
+                       int secondNumber = int.parse(secondElement);
+
+                       int sum = firstNumber * secondNumber;
+
+                       changeValue(sum.toString());
+                     }
+                    },
+                  ),
+                ],
+              ),
              ],
           ),
        ) ],
       )
     );
+  }
+
+  changeValue(String value){
+    setState(() {
+      calValue = value;
+    });
   }
 }
